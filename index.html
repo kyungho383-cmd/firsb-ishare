@@ -4,10 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>홈페이지</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .grid-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+        .grid-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .grid-item h3 {
+            margin: 10px;
+            text-align: center;
+            color: #333;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.9);
+        }
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>안녕하세요!</h1>
-    <p>이것은 기본적인 HTML 페이지입니다.</p>
-    <img src="asset/kitchen/image.png" alt="주방 사진">
+    <h1>집 공간 카테고리</h1>
+    <div class="grid-container">
+        <div class="grid-item" onclick="openModal('images/현관.jpg')">
+            <img src="images/현관.jpg" alt="현관" onerror="this.src='https://via.placeholder.com/300x200?text=현관'">
+            <h3>현관</h3>
+        </div>
+        <div class="grid-item" onclick="openModal('images/복도.jpg')">
+            <img src="images/복도.jpg" alt="복도" onerror="this.src='https://via.placeholder.com/300x200?text=복도'">
+            <h3>복도</h3>
+        </div>
+        <div class="grid-item" onclick="openModal('images/거실.jpg')">
+            <img src="images/거실.jpg" alt="거실" onerror="this.src='https://via.placeholder.com/300x200?text=거실'">
+            <h3>거실</h3>
+        </div>
+        <div class="grid-item" onclick="openModal('images/침실1.jpg')">
+            <img src="images/침실1.jpg" alt="침실1" onerror="this.src='https://via.placeholder.com/300x200?text=침실1'">
+            <h3>침실1</h3>
+        </div>
+        <div class="grid-item" onclick="openModal('images/침실2.jpg')">
+            <img src="images/침실2.jpg" alt="침실2" onerror="this.src='https://via.placeholder.com/300x200?text=침실2'">
+            <h3>침실2</h3>
+        </div>
+        <div class="grid-item" onclick="openModal('images/침실3.jpg')">
+            <img src="images/침실3.jpg" alt="침실3" onerror="this.src='https://via.placeholder.com/300x200?text=침실3'">
+            <h3>침실3</h3>
+        </div>
+        <div class="grid-item" onclick="openModal('images/다용도실.jpg')">
+            <img src="images/다용도실.jpg" alt="다용도실" onerror="this.src='https://via.placeholder.com/300x200?text=다용도실'">
+            <h3>다용도실</h3>
+        </div>
+        <div class="grid-item" onclick="openModal('images/욕실1.jpg')">
+            <img src="images/욕실1.jpg" alt="욕실1" onerror="this.src='https://via.placeholder.com/300x200?text=욕실1'">
+            <h3>욕실1</h3>
+        </div>
+        <div class="grid-item" onclick="openModal('images/욕실2.jpg')">
+            <img src="images/욕실2.jpg" alt="욕실2" onerror="this.src='https://via.placeholder.com/300x200?text=욕실2'">
+            <h3>욕실2</h3>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('myModal').style.display = 'block';
+            document.getElementById('modalImg').src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = 'none';
+        }
+
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('myModal')) {
+                closeModal();
+            }
+        }
+    </script>
 </body>
 </html>
